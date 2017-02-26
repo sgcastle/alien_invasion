@@ -7,7 +7,7 @@ import game_functions as gf
 
 
 def run_game():
-	# Initialize pygame, settings, screen object.
+	# Initialize pygame, settings, screen object
 	pygame.init()
 	ai_settings = Settings()
 	screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
@@ -18,14 +18,15 @@ def run_game():
 	bullets = Group()
 	aliens = Group()
 
-	# Create the fleet of aliens.
+	# Create the fleet of aliens
 	gf.create_fleet(ai_settings, screen, ship, aliens)
 
-	# Start the main loop for the game.
+	# Start the main loop for the game
 	while True:
 		gf.check_events(ai_settings, screen, ship, bullets)
 		ship.update()
 		gf.update_bullets(bullets)
+		gf.update_aliens(ai_settings, aliens)
 		gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 run_game()
